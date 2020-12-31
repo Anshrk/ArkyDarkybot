@@ -3,11 +3,14 @@ from discord.ext import commands
 import re
 import requests
 import random
+client = commands.Bot(command_prefix='>')
 
 
 class MyClient(discord.Client):
-    async def on_ready(self):
-        print(f'logged an as {self.user}')
+    async def on_ready():
+        await client.change_presence(status=discord.Status.online, activity=discord.Game('the prefix > | >help'))
+        print("Bot is connecting...\n")
+        print("Bot is live!")
 
     async def on_message(self, message):
         print(f"message from {message.author}: {message.content}")
