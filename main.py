@@ -31,7 +31,7 @@ class MyClient(discord.Client):
             # print(payload)
             await ctx.send(f"> Here is your result for: {query}\n{payload}")
 
-client = MyClient('code.')
+client = MyClient()
 with open('token.txt','r') as my_token:
     token = my_token.read()
 client.run(token)
