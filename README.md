@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Hello World
-> my name is Ansh
-=======
 # Discord Bot Tutorial
 
 How to install discord.py
@@ -21,4 +17,3 @@ Resources:
 - Create a New Application, put any name you fell like.
 - Get into the application, and at the left-hand side under settings click on "Bot", and finally click on "Add Bot".
 - Now your Application has become a Bot Application!
->>>>>>> e248b06dd87cfc19a81041bbeed7a8c4791d9632
