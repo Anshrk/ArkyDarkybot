@@ -29,7 +29,7 @@ class MyClient(discord.Client):
         query = str(arg)
         # print("query: ", query)
         url = "https://www.youtube.com/results?search_query="
-        with requests.get(url + query) as reponse:
+        with requests.get(url + query) as response:
             # regex = '/watch\?v\=[a-zA-z0-9/_/-/*]+'
             regex = '/watch\?v\=(.*?)\"'
             # regex = r'/watch\?v=[a-zA-Z0-9]+'
