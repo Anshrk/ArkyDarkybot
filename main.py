@@ -54,9 +54,11 @@ async def clear(ctx, amount=10):
 
 # command to Kick and Ban.
 @bot.command()
+@has_permissions(administrator=True)
 async def kick(ctx, member : discord.Member, *, reason=None):
     await member.kick(reason=reason)
 @bot.command()
+@has_permissions(administrator=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
     await member.ban(reason=reason)
 
