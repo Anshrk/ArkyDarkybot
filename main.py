@@ -1,3 +1,4 @@
+import os
 import discord
 from discord.ext import commands
 import re
@@ -73,6 +74,5 @@ async def ban(ctx, member: discord.Member, *, reason=None):
 
 
 
-with open('token.txt', 'r') as my_token:
-    token = my_token.read()
+token = os.getenv("DISCORD_BOT_TOKEN")
 bot.run(token)
