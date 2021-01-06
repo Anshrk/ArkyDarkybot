@@ -46,6 +46,7 @@ async def ping(ctx):
     """Display the latency, with a pong ofcource."""
     await ctx.send(f"Pong! {round(bot.latency * 1000)}")
 
+
 # Clear Messages from the bot.
 @bot.command()
 async def clear(ctx, amount=10):
@@ -57,10 +58,12 @@ async def clear(ctx, amount=10):
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def kick(ctx, member : discord.Member, *, reason=None):
+    """Kick members."""
     await member.kick(reason=reason)
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
+    """Kick members."""
     await member.ban(reason=reason)
 
 
