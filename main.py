@@ -24,8 +24,8 @@ async def on_member_join(member):
 
 
 # command to post a youtubevideo
-@bot.command(aliases=["yt"])
-async def youtube(ctx, *, arg):
+@bot.command(aliases=["yt", "youtube"])
+async def _youtube(ctx, *, arg):
     """Search YouTube"""
     query = str(arg)
     # print("query: ", query)
@@ -41,31 +41,58 @@ async def youtube(ctx, *, arg):
 
 
 # Command to display the latency of the bot.
-@bot.command()
-async def ping(ctx):
+@bot.command(aliases=["ping"])
+async def _ping(ctx):
     """Display the latency, with a pong ofcource."""
     await ctx.send(f"Pong! {round(bot.latency * 1000)}")
 
 
 # Clear Messages from the bot.
-@bot.command()
-async def clear(ctx, amount=10):
+@bot.command(aliases=["clear"])
+async def _clear(ctx, amount=10):
     """Clear Messages."""
     await ctx.channel.purge(limit=amount+1)
 
 
-# command to Kick and Ban.
-@bot.command()
+# command to Kick.
+@bot.command(aliases=["kick"])
 @commands.has_permissions(administrator=True)
-async def kick(ctx, member : discord.Member, *, reason=None):
+async def _kick(ctx, member : discord.Member, *, reason=None):
     """Kick members."""
     await member.kick(reason=reason)
-@bot.command()
-@commands.has_permissions(administrator=True)
-async def ban(ctx, member: discord.Member, *, reason=None):
-    """Kick members."""
-    await member.ban(reason=reason)
+    await ctx.send(f'banned {member}')
 
+# command to Ban.
+@bot.command(aliases=["ban"])
+@commands.has_permissions(administrator=True)
+async def _ban(ctx, member : discord.Member, *, reason=None):
+    """Ban members."""
+    await member.ban(reason=reason)
+    await ctx.send(f'Banned <@!{member.id}>')
+
+# @bot.command(aliases=['unban'])
+# @commands.has_permissions(administrator=True)
+# async def _unban(ctx, *, member):
+#     member_name = bot.fetch_uer(member)
+#     banned_users = await ctx.guild.bans()
+#     member_name, member_discriminator = member_name.split('#')
+# 
+#     for ban_entry in banned_users:
+#         user = ban_entry.user
+# 
+#         if (user.name, user.discriminator) == (member, member__discriminator):
+#             await ctx.guild.unban(user)
+#             await ctx.send(f'Unbanned {user.mention}')
+#     await ctx.guild.unban(bot.fetch_user(member))
+
+
+# 8 ball command.
+@bot.command(aliases=["8ball", "8b"])
+async def _8ball(ctx, *, question):
+    await ctx.send(random.choice(["As I see it, yes.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.",
+             "Don’t count on it.", "It is certain.", "It is decidedly so.", "Most likely.", "My reply is no.", "My sources say no.",
+             "Outlook not so good.", "Outlook good.", "Reply hazy, try again.", "Signs point to yes.", "Very doubtful.", "Without a doubt.",
+             "Yes.", "Yes – definitely.", "You may rely on it."]))
 
 # @bot.command()
 # async def poll(ctx, *, message):
