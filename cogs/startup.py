@@ -9,7 +9,7 @@ class StartupCommands(commands.Cog):
     # on startup
     @commands.Cog.listener()
     async def on_ready(self):
-        await client.change_presence(status=discord.Status.idle, activity=discord.Game("Hello There!"))
+        await self.client.change_presence(status=discord.Status.idle, activity=discord.Game("Hello There!"))
         print("The Bot is ready to take over the wor- serve you!!!")
 
 
