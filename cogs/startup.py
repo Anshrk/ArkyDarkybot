@@ -9,6 +9,7 @@ class StartupCommands(commands.Cog):
     # on startup
     @commands.Cog.listener()
     async def on_ready(self):
+        await client.change_presence(status=discord.Status.idle, activity=discord.Game("Hello There!"))
         print("The Bot is ready to take over the wor- serve you!!!")
 
 
@@ -16,6 +17,7 @@ class StartupCommands(commands.Cog):
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f"Pong! {round(self.client.latency * 1000)}")
+
 
 
 def setup(client):
