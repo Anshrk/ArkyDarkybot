@@ -1,6 +1,7 @@
 import discord
 import os
 from discord.ext import commands, tasks
+from itertools import cycle
 
 class StartupCommands(commands.Cog):
     def __init__(self, client):
