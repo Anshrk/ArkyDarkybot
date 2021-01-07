@@ -1,6 +1,6 @@
 import discord
 import os
-from discord.ext import commands
+from discord.ext import commands, tasks
 
 class StartupCommands(commands.Cog):
     def __init__(self, client):
