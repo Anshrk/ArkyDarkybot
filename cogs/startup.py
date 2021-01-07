@@ -2,14 +2,15 @@ import discord
 import os
 from discord.ext import commands
 
-class Example(commands.Cog):
+class StartupCommands(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # on ready function
+    # on startup
     @commands.Cog.listener()
     async def on_ready(self):
-        print('Bot is online.')
+        print("The Bot is ready to take over the wor- serve you!!!")
+
 
     # latency check
     @commands.command()
@@ -17,7 +18,5 @@ class Example(commands.Cog):
         await ctx.send(f"Pong! {round(self.client.latency * 1000)}")
 
 
-
-
 def setup(client):
-    client.add_cog(Example(client))
+    client.add_cog(StartupCommands(client))
