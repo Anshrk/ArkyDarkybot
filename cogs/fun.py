@@ -24,7 +24,7 @@ class FunCommands(commands.Cog):
             # print(payload)
             await ctx.send(f"> Here is your result for: {query}\n{payload}")
 
-    @commands.command(aliases=["pfp"])
+    @commands.command(aliases=["av"])
     async def avatar(self, ctx, member: commands.MemberConverter = None):
         """What's your profile pic?"""
         member = member or ctx.author
