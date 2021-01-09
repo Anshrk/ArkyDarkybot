@@ -1,6 +1,8 @@
 import discord
 import os
 from discord.ext import commands
+import re
+import requests
 
 class FunCommands(commands.Cog):
     def __init__(self, client):
