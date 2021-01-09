@@ -9,7 +9,7 @@ class FunCommands(commands.Cog):
         self.client = client
 
 
-    @commands.command(aliases=["yt"])
+    @bot.command(aliases=["yt"])
     async def youtube(self, ctx, *, arg):
         """Search YouTube"""
         query = str(arg)
@@ -22,9 +22,7 @@ class FunCommands(commands.Cog):
             match = re.findall(regex, response.text)[0]
             payload = "https://www.youtube.com/watch?v=" + match
             # print(payload)
-            embed = discord.Embed()
-            embed.discription = f"> Here is your result for: {query}\n{payload}"
-            await ctx.send(embed=embed)
+            await ctx.send(f"> Here is your result for: {query}\n{payload}")
 
     @commands.command(alias="pfp")
     async def profilepicture(self, ctx, user):
