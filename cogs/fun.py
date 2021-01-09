@@ -9,7 +9,7 @@ class FunCommands(commands.Cog):
         self.client = client
 
 
-    @bot.command(aliases=["yt"])
+    @commands.command(aliases=["yt"])
     async def youtube(self, ctx, *, arg):
         """Search YouTube"""
         query = str(arg)
