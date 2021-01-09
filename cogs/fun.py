@@ -22,7 +22,15 @@ class FunCommands(commands.Cog):
             match = re.findall(regex, response.text)[0]
             payload = "https://www.youtube.com/watch?v=" + match
             # print(payload)
-            await ctx.send(f"> Here is your result for: {query}\n{payload}")
+            embed = discord.Embed()
+            embed.discription = f"> Here is your result for: {query}\n{payload}"
+            await ctx.send(embed=embed)
+
+    @commands.command(alias="pfp")
+    async def profilepicture(self, ctx, user):
+        pass
+
+
 
 def setup(client):
     client.add_cog(FunCommands(client))
