@@ -24,9 +24,15 @@ class FunCommands(commands.Cog):
             # print(payload)
             await ctx.send(f"> Here is your result for: {query}\n{payload}")
 
-    @commands.command(alias="pfp")
-    async def profilepicture(self, ctx, user):
-        pass
+    @commands.command(aliases=["pfp"])
+    async def avatar(self, ctx, member: commands.MemberConverter = None):
+        """What's your profile pic?"""
+        member = member or ctx.author
+        embed = discord.Embed()
+        embed.set_author(name=f"{ctx.author}", icon_url=member.avatar_url)
+        embed.set_footer(text=f"Requested by {ctx.author.display_name}")
+        embed.set_image(url=member.avatar_url)
+        await ctx.send(embed=embed)
 
 
 
