@@ -14,7 +14,6 @@ class FunCommands(commands.Cog):
         """Initialize the class."""
         self.client = client
 
-
     @commands.command(aliases=["yt"])
     async def youtube(self, ctx, *, arg):
         """Search YouTube."""
@@ -59,15 +58,14 @@ class FunCommands(commands.Cog):
         async def get_t_meaning(ctx=ctx, words=words):
             print(" ".join(words))
             client = UrbanClient()
-            try:
-                defs = client.get_definition(str(' '.join(words)))
-                _def = defs[0]
-                send_back = f"Meaning of {_def.word}\n\n\n"
-                send_back += f"""{_def.definition}
+            defs = client.get_definition(str(' '.join(words)))
+            _def = defs[0]
+            send_back = f"Meaning of {_def.word}\n\n\n"
+            send_back += f"""{_def.definition}
 
-                **EXAMPLES**
-                {_def.example}"""
-                await ctx.send(send_back)
+            **EXAMPLES**
+            {_def.example}"""
+            await ctx.send(send_back)
 
         async def get_r(ctx=ctx, words=words):
             print(" ".join(words))
@@ -81,7 +79,7 @@ class FunCommands(commands.Cog):
             {random_def.example}"""
             await ctx.send(send_back)
 
-        async def not_found(function):
+        async def not_found():
             await ctx.send("option {function} not found :(")
 
         do_stuff = {
@@ -90,11 +88,6 @@ class FunCommands(commands.Cog):
                 "-r": get_r
                 }
         await do_stuff.get(function, not_found)()
-
-
-
-
-
 
 
 def setup(client):

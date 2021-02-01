@@ -1,12 +1,5 @@
 """Import required modules."""
-import random
 from discord.ext import commands
-
-pictures = [
-    "https://bit.ly/2MLMWjG",
-    "https://bit.ly/3pAZd9u",
-    "https://bit.ly/2Yv0web",
-]
 
 
 class StartupCommands(commands.Cog):
@@ -32,11 +25,9 @@ class StartupCommands(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
         """To run when members join."""
-        channel = member.guild.system_channel
+        channel = self.client.get_channel(805726305031028737)
         if channel is not None:
-            await channel.send(f"""Welcome {member.mention}, to hell,
-                    heres a random cat picture to look at""")
-            await channel.send(f'{random.choice(pictures)}')
+            await channel.send(f"Welcome to ACTUAL HELL, {member.mention}")
 
 
 def setup(client):
