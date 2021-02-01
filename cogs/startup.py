@@ -1,33 +1,35 @@
-import discord
-import os
-from discord.ext import commands, tasks
-from itertools import cycle
+"""Import required modules."""
+from discord.ext import commands
 
-status = ["AttributeError", "EOFError", "IOError",
-        "IndexError", "KeyError", "KeyboardInterrupt",
-        "NameError", "StopIteration", "TypeError",
-        "ValueError", "ZeroDivisionError"]
 
 class StartupCommands(commands.Cog):
+    """Startup commands class."""
+
     def __init__(self, client):
+        """Initialize command."""
         self.client = client
 
     # on startup
     @commands.Cog.listener()
     async def on_ready(self):
+        """On ready command."""
 #         self.change_status.start()
         print("The Bot is ready to take over the wor- serve you!!!")
-
 
     # latency check
     @commands.command()
     async def ping(self, ctx):
+        """Ping yourself or something i dunno."""
         await ctx.send(f"Pong! {round(self.client.latency * 1000)}")
 
-#     @tasks.loop(seconds=10)
-#     async def change_status(self):
-#         await commands.bot.changepresence(
-#                 activity=discord.Game(next(status)))
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        """To run when members join."""
+        channel = self.client.get_channel(805726305031028737)
+        if channel is not None:
+            await channel.send(f"Welcome to ACTUAL HELL, {member.mention}")
+
 
 def setup(client):
+    """Set up all the cogs."""
     client.add_cog(StartupCommands(client))

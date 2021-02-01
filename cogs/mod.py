@@ -1,9 +1,13 @@
+"""Import modules."""
 import discord
-import os
 from discord.ext import commands
 
+
 class ModerationCommands(commands.Cog):
+    """Moderation commands to... moderate."""
+
     def __init__(self, client):
+        """Initialize the class."""
         self.client = client
 
     @commands.command()
@@ -15,7 +19,7 @@ class ModerationCommands(commands.Cog):
     # command for ban
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def ban(self, ctx, member : discord.Member, *, reason=None):
+    async def ban(self, ctx, member: discord.Member, *, reason=None):
         """Ban members."""
         await member.ban(reason=reason)
         await ctx.send(f'Banned <@!{member.id}>')
@@ -23,10 +27,12 @@ class ModerationCommands(commands.Cog):
     # kick command
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def kick(self, ctx, member : discord.Member, *, reason=None):
+    async def kick(self, ctx, member: discord.Member, *, reason=None):
         """Kick members."""
         await member.kick(reason=reason)
         await ctx.send(f'Kicked <@!{member.id}>')
 
+
 def setup(client):
+    """Set up all the cogs."""
     client.add_cog(ModerationCommands(client))
